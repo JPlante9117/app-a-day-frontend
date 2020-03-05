@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { updateGoal } from '../actions/goals'
 
 class Goal extends React.Component {
 
@@ -10,22 +13,25 @@ class Goal extends React.Component {
         completed: this.props.complete
     }
 
-    componentDidMount() {
-        
+    changeComplete = () => {
+        this.props.updateGoal(this.state)
+        this.setState({
+            completed: !this.state.completed
+        })
     }
 
     render(){
-        let {id, title, description, due_date, complete, markComplete} = this.props
+        let {title, description, due_date, completed} = this.state
         return(
             <div>
                 Title: {title}<br/>
                 Descr: {description}<br/>
                 Due: {due_date}<br/>
-                Completed: {complete ? "Yes" : "No"}<br/>
-                <button onClick={() => markComplete(this.state)}>{complete ? "Undo Complete" : "Mark Complete"}</button>
+                Completed: {completed ? "Yes" : "No"}<br/>
+                <button onClick={this.changeComplete}>{completed ? "Undo Complete" : "Mark Complete"}</button>
             </div>
         )
     }
 }
 
-export default Goal
+export default connect(null, { updateGoal })(Goal)

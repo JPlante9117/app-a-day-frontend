@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getGoals, updateGoal } from '../actions/goals'
+import { getGoals } from '../actions/goals'
 import Goal from '../components/Goal'
 
 class Dashboard extends React.Component {
@@ -8,13 +8,9 @@ class Dashboard extends React.Component {
     componentDidMount() {
         this.props.getGoals()
     }
-
-    markComplete = (goal) => {
-        this.props.updateGoal(goal)
-    }
     
     render() {
-        const renderGoals = this.props.goals.map(goal => <Goal markComplete={this.markComplete} id={goal.id} key={goal.id} title={goal.title} description={goal.description} complete={goal.completed} due_date={goal.due_date} />)
+        const renderGoals = this.props.goals.map(goal => <Goal id={goal.id} key={goal.id} title={goal.title} description={goal.description} complete={goal.completed} due_date={goal.due_date} />)
         return(
             <div>
                 <h2>GOALS</h2>
@@ -30,4 +26,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getGoals, updateGoal })(Dashboard)
+export default connect(mapStateToProps, { getGoals })(Dashboard)
