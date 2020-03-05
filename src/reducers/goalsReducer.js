@@ -40,6 +40,11 @@ export default function goalsReducer(state={
                 goals: [...state.goals, action.payload]
             }
 
+        case "DELETE_GOAL":
+            return {
+                goals: state.goals.filter(goal => goal.id !== action.payload)
+            }
+
         default:
             return state
     }

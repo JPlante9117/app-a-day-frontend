@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateGoal } from '../actions/goals'
+import { updateGoal, deleteGoal } from '../actions/goals'
 
 class Goal extends React.Component {
 
@@ -20,6 +20,10 @@ class Goal extends React.Component {
         })
     }
 
+    deleteGoal = () => {
+        this.props.deleteGoal(this.state.id)
+    }
+
     render(){
         let {title, description, due_date, completed} = this.state
         return(
@@ -29,9 +33,10 @@ class Goal extends React.Component {
                 Due: {due_date}<br/>
                 Completed: {completed ? "Yes" : "No"}<br/>
                 <button onClick={this.changeComplete}>{completed ? "Undo Complete" : "Mark Complete"}</button>
+                <button onClick={this.deleteGoal}>Remove Goal</button>
             </div>
         )
     }
 }
 
-export default connect(null, { updateGoal })(Goal)
+export default connect(null, { updateGoal, deleteGoal })(Goal)

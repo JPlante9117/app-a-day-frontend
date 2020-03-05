@@ -2,13 +2,36 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Dashboard from './containers/Dashboard';
+import { connect } from 'react-redux';
+import { getGoals } from './actions/goals'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Goals from './containers/Goals'
+import GoalForm from './components/GoalForm'
 
-function App() {
-  return (
-    <div className="App">
-      <Dashboard />
-    </div>
-  );
+class App extends React.Component {
+
+  componentDidMount() {
+    this.props.getGoals()
+  }
+
+  render(){
+    return (
+      <div className="App">
+          <Router>
+            <Route exact path={"/dashboard"} component={Dashboard} />
+            <Route exact path={"/goals"} render={props => <Goals {...props} goals={this.props.goals} />} />
+            <Route exact path={"/goals/new"} component={GoalForm} />
+            <Route exact path={"/goals/complete"} render={props => <Goals {...props} goals={this.props.goals} /> } />
+        </Router>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+      goals: state.goalsState.goals
+  }
+}
+
+export default connect(mapStateToProps, { getGoals })(App)

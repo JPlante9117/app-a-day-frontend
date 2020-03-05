@@ -44,3 +44,19 @@ export const createGoal = goal => {
         })
     }
 }
+
+export const deleteGoal = id => {
+    return dispatch => {
+        dispatch({type: "LOADING_GOALS"})
+        return fetch(`http://localhost:3001/goals/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json'
+            }
+        })
+        .then(data => {
+            dispatch({type: "DELETE_GOAL", payload: id})
+        })
+    }
+}
