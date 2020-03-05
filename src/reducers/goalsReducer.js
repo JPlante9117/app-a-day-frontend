@@ -35,6 +35,11 @@ export default function goalsReducer(state={
                 }
             }
 
+        case "CREATE_GOAL":
+            return {
+                goals: [...state.goals, action.payload]
+            }
+
         default:
             return state
     }
