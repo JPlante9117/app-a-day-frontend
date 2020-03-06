@@ -1,0 +1,68 @@
+.jobCard {
+    width: 20em;
+    height: 20em;
+    margin: 0.5em;
+    border-radius: 10px;
+    background: rgb(235, 235, 235);
+    display: inline-flex;
+    color: black;
+    box-shadow:10px 10px 5px rgb(211, 211, 211);
+  }
+
+  .jobContent {
+    position: relative;
+    padding: 1em;
+    width: 100%
+  }
+
+  .jobTitle {
+      text-align: center;
+      font-size: 1.5rem;
+      border-bottom: 5px dotted gray;
+      padding-bottom: 5px;
+  }
+
+  .jobDescription {
+      font-size: 1.2rem;
+      padding: 1.5em;
+  }
+
+  .jobButtonRowContainer {
+    position: absolute;
+    width: 100%;
+    bottom: 1%;
+    margin-left: -1em;
+  }
+
+  .jobButtonRow {
+      text-align: center;
+  }
+
+  .jobStatusContainer {
+      position: absolute;
+      bottom: 25%;
+      width: 100%;
+      margin: -1em;
+  }
+
+  .jobStatus {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .updateJob, .removeJob {
+    border: 0;
+    background: #78f89f;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin: 0.2em;
+    width: 8em;
+    font-size: 1rem;
+  }
+
+  .removeJob {
+    background: lightcoral;
+  }

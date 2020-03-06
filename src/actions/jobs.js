@@ -11,7 +11,7 @@ export const getJobs = () => {
 
 export const updateJob = (job) => {
     return dispatch => {
-        dispatch({type: "CHANGING_COMPLETE_STATUS"})
+        dispatch({type: "LOADING_JOBS"})
         return fetch(`http://localhost:3001/jobs/${job.id}`, {
             method: 'PATCH',
             headers: {
@@ -56,7 +56,7 @@ export const deleteJob = id => {
             }
         })
         .then(data => {
-            dispatch({type: "DELETE_GOAL", payload: id})
+            dispatch({type: "DELETE_JOB", payload: id})
         })
     }
 }

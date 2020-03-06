@@ -40,7 +40,7 @@ class JobForm extends React.Component {
                     <h3>Brief Description</h3>
                     <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="80" placeholder="Supply a brief description (max 80 characters)" />
                     <h3>How Far Along Are You?</h3>
-                    <select name="status" value={this.state.status}>
+                    <select name="status" value={this.state.status} onChange={this.handleChange}>
                         <option value="Interested">Interested</option>
                         <option value="Applying">Applying</option>
                         <option value="Applied">Applied</option>
@@ -48,7 +48,8 @@ class JobForm extends React.Component {
                         <option value="Declined">Declined</option>
                         <option value="Hired">Hired</option>
                     </select>
-                    
+                    <h3>Link to Job Post</h3>
+                    <input type="text" name="link" value={this.state.link} onChange={this.handleChange} placeholder="example.com/JobIWant" />
                     <br/><br/>
                     <input type="submit" value="Create Job" /> <button className="cancelButton" onClick={e => this.props.onClose(e)}>Cancel</button>
                 </form>

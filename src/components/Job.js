@@ -1,24 +1,29 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import '../jobs.css'
 
-class Job extends React.Component {
-    state = {
-        title: this.props.title,
-        description: this.props.description,
-        status: this.props.status,
-        link: this.props.link
-    }
+const Job = props => {
+    
+    const { title, description, status, completed} = props.job
 
-    render(){
-        return(
-            <div>
-                Title: {this.state.title}<br/>
-                Description: {this.state.description}<br/>
-                status: {this.state.status}<br/>
-                <a href={this.props.link}>Link to Job Post</a>
+    return(
+        <div className="jobCard" >
+            <div className="jobContent">
+                <div className="jobTitle">{title}</div>
+                <div className="jobDescription">{description}</div>
+                <div className="jobStatusContainer">    
+                    <div className="jobStatus">
+                        {status}
+                    </div>
+                </div>
+                <div className="jobButtonRowContainer">
+                    <div className="jobButtonRow">
+                        <button className="updateJob" onClick={() => props.handleOnEditClick(props.job)}>Update Job</button>
+                        <button className="removeJob" onClick={() => props.handleOnDeleteClick(props.job.id)}>Remove Job</button>
+                    </div>
+                </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
-export default connect()(Job)
+export default Job

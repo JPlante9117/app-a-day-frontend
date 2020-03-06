@@ -10,32 +10,29 @@ export default function JOBSReducer(state={
 
         case "JOBS_LOADED":
             return {
+                ...state,
                 jobs: action.payload,
                 loading: false
             }
 
         case "UPDATE_JOB_COMPLETE":
-            let idx = state.jobs.findIndex(goal => goal.id === action.payload.id)
-            let updatedJob = state.jobs[idx]
-
-            if (updatedJob === state.jobs[state.jobs.length - 1]){
-                return {
-                    jobs: [...state.jobs.slice(0, idx), updatedJob]
-                }
-            } else {
-                return {
-                    jobs: [...state.jobs.slice(0, idx), updatedJob, ...state.jobs.slice(idx + 1)],
-                    loading: false
-                }
+            
+            return {
+                ...state,
+                jobs: [...state.jobs.map(job => {
+                    return job.id === action.payload.id ? action.payload : job
+                })]
             }
 
         case "CREATE_JOB":
             return {
+                ...state,
                 jobs: [...state.jobs, action.payload]
             }
 
         case "DELETE_JOB":
             return {
+                ...state,
                 jobs: state.jobs.filter(job => job.id !== action.payload)
             }
 
