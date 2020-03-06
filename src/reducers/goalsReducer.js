@@ -10,6 +10,7 @@ export default function goalsReducer(state={
 
         case "GOALS_LOADED":
             return {
+                ...state,
                 goals: action.payload,
                 loading: false
             }
@@ -21,27 +22,23 @@ export default function goalsReducer(state={
             }
 
         case "STATUS_CHANGE_COMPLETE":
-            let idx = state.goals.findIndex(goal => goal.id === action.payload.id)
-            let updatedGoal = state.goals[idx]
 
-            if (updatedGoal === state.goals[state.goals.length - 1]){
-                return {
-                    goals: [...state.goals.slice(0, idx), updatedGoal]
-                }
-            } else {
-                return {
-                    goals: [...state.goals.slice(0, idx), updatedGoal, ...state.goals.slice(idx + 1)],
-                    loading: false
-                }
+            return {
+                ...state,
+                goals: [...state.goals.map(goal => {
+                    return goal.id === action.payload.id ? action.payload : goal
+                })]
             }
 
         case "CREATE_GOAL":
             return {
+                ...state,
                 goals: [...state.goals, action.payload]
             }
 
         case "DELETE_GOAL":
             return {
+                ...state,
                 goals: state.goals.filter(goal => goal.id !== action.payload)
             }
 

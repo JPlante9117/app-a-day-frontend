@@ -2,12 +2,23 @@ import React from 'react'
 import Goal from '../components/Goal'
 import Modal from '../components/Modal'
 import GoalForm from '../components/GoalForm'
+import { connect } from 'react-redux'
+
+import { updateGoal, deleteGoal } from '../actions/goals'
+
 
 class Goals extends React.Component {
 
     state = {
-        goals: [],
         show: false
+    }
+
+    handleCompleteClick = (goal) => {
+        this.props.updateGoal(goal)
+    }
+
+    handleDeleteClick = (id) => {
+        this.props.deleteGoal(id)
     }
 
     toggleModal = e => {
@@ -17,12 +28,11 @@ class Goals extends React.Component {
     }
 
     render(){
-        let goals = this.props.goals.filter(goal => goal.completed === true)
-        let completedGoals = this.props.goals.filter(goal => goal.completed === false)
-        let renderGoals = goals.map(goal => <Goal id={goal.id} key={goal.id} title={goal.title} description={goal.description} complete={goal.completed} due_date={goal.due_date} />)
-        let renderCompletedGoals = completedGoals.map(goal => <Goal id={goal.id} key={goal.id} title={goal.title} description={goal.description} complete={goal.completed} due_date={goal.due_date} />)
+        let goals = this.props.goals.filter(goal => goal.completed === false)
+        let completedGoals = this.props.goals.filter(goal => goal.completed === true)
+        let renderGoals = goals.map(goal => <Goal goal={goal} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)
+        let renderCompletedGoals = completedGoals.map(goal => <Goal goal={goal} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)
 
-        
         return(
             <div>
                 <button className="createGoal" onClick={this.toggleModal}>Set New Goal</button>
@@ -39,4 +49,10 @@ class Goals extends React.Component {
     }
 }
 
-export default Goals
+const mapStateToProps = state => {
+    return {
+        goals: state.goalsState.goals
+    }
+}
+
+export default connect(mapStateToProps, { updateGoal, deleteGoal })(Goals)

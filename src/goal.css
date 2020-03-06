@@ -1,15 +1,17 @@
-.goal-true, .goal-false {
+.goalCard {
     width: 20em;
     height: 20em;
     margin: 0.5em;
     border-radius: 10px;
     background: rgb(235, 235, 235);
     display: inline-flex;
+    color: black;
   }
-  
+
   .goalContent {
     position: relative;
     padding: 1em;
+    width: 100%
   }
 
   .goalTitle {
@@ -25,7 +27,7 @@
 
   .goalButtonRow {
     position: absolute;
-    bottom: 0;
+    bottom: 1%;
   }
 
   
