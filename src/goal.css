@@ -1,0 +1,31 @@
+.goal-true, .goal-false {
+    width: 20em;
+    height: 20em;
+    margin: 0.5em;
+    border-radius: 10px;
+    background: rgb(235, 235, 235);
+    display: inline-flex;
+  }
+  
+  .goalContent {
+    position: relative;
+    padding: 1em;
+  }
+
+  .goalTitle {
+      text-align: center;
+      font-size: 1.5rem;
+      border-bottom: 5px dotted gray;
+  }
+
+  .goalDescription {
+      font-size: 1.2rem;
+      padding: 1.5em;
+  }
+
+  .goalButtonRow {
+    position: absolute;
+    bottom: 0;
+  }
+
+  

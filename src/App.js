@@ -16,12 +16,12 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="App">
+      <div>
           <Router>
             <Route exact path={"/dashboard"} component={Dashboard} />
-            <Route exact path={"/goals"} render={props => <Goals {...props} goals={this.props.goals} />} />
+            <Route exact path={"/goals"} render={props => <Goals goals={this.props.goals} />} />
             <Route exact path={"/goals/new"} component={GoalForm} />
-            <Route exact path={"/goals/complete"} render={props => <Goals {...props} goals={this.props.goals} /> } />
+            <Route exact path={"/goals/complete"} render={props => <Goals goals={this.props.goals} /> } />
         </Router>
       </div>
     );

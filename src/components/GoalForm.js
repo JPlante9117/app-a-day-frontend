@@ -28,22 +28,22 @@ class GoalForm extends React.Component {
             completed: false,
             due_date: ""
         })
-        this.props.history.push('/goals')
+        this.props.toggleModal()
     }
 
     render() {
         return(
             <div>
-                <h1>Set a New Goal</h1>
+                <h2>Set a New Goal</h2>
                 <form onSubmit={this.handleSubmit} >
-                    <h2>Name the Goal</h2>
+                    <h3>Name the Goal</h3>
                     <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
-                    <h2>Describe the Goal</h2>
-                    <input type="text" name="description" value={this.state.description} onChange={this.handleChange} />
-                    <h2>When Do You Want It Done?</h2>
+                    <h3>Describe the Goal</h3>
+                    <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} />
+                    <h3>When Do You Want It Done?</h3>
                     <input type="text" name="due_date" value={this.state.due_date} onChange={this.handleChange} />
                     <br/><br/>
-                    <input type="submit" value="Set Goal" />
+                    <input type="submit" value="Set Goal" /> <button className="cancelButton" onClick={e => this.props.onClose(e)}>Cancel</button>
                 </form>
             </div>
         )
