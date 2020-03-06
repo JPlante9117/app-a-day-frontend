@@ -13,10 +13,13 @@ const Goal = props => {
             <div className="goalContent">
                 <div className="goalTitle">{title}</div>
                 <div className="goalDescription">{description}</div>
-                <div className="">Due <Moment format="MMMM  D, YYYY">{due_date}</Moment> </div>
-                Completed: {completed ? "Yes" : "No"}<br/>
+                <div className="goalDuedate">
+                    <div className="centered">
+                        Due <Moment format="MMMM  D, YYYY">{due_date}</Moment>
+                    </div>
+                </div>
                 <div className="goalButtonRow">
-                    <button className="markComplete" onClick={() => props.handleOnCompleteClick(props.goal)}>{completed ? "Undo Complete" : "Mark Complete"}</button>
+                    <button className="markComplete" onClick={() => props.handleOnCompleteClick(props.goal)}>{completed ? "Mark Incomplete" : "Mark Complete"}</button>
                     <button className="removeGoal" onClick={() => props.handleOnDeleteClick(props.goal.id)}>Remove Goal</button>
                 </div>
             </div>

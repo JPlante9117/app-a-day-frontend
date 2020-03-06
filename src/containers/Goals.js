@@ -39,9 +39,10 @@ class Goals extends React.Component {
                 <Modal onClose={this.toggleModal} show={this.state.show} >
                     <GoalForm toggleModal={this.toggleModal} onClose={this.toggleModal} />
                 </Modal>
-                <h2>GOALS</h2>
+                <h2>Current Goals</h2>
                 {renderGoals}
                 <hr />
+                <h2>Completed Goals</h2>
                 {renderCompletedGoals}
                 
             </div>
