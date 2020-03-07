@@ -2,8 +2,8 @@ import React from 'react'
 import '../jobs.css'
 
 const Job = props => {
-    
-    const { title, description, status, completed} = props.job
+
+    const { title, description, status, link, labels} = props.job
 
     return(
         <div className="jobCard" >
@@ -14,6 +14,9 @@ const Job = props => {
                     <div className="jobStatus">
                         {status}
                     </div>
+                </div>
+                <div>
+                    {/* tags: {props.job.labels.map(label => label.title)} */}
                 </div>
                 <div className="jobButtonRowContainer">
                     <div className="jobButtonRow">

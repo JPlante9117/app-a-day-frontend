@@ -25,6 +25,7 @@ export default function JOBSReducer(state={
             }
 
         case "CREATE_JOB":
+            debugger
             return {
                 ...state,
                 jobs: [...state.jobs, action.payload]

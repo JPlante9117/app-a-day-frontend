@@ -38,9 +38,13 @@ export const createJob = job => {
             },
             body: JSON.stringify(job)
         })
-        .then(resp => resp.json())
+        .then(resp => {
+            return resp.json()})
         .then(data => {
             dispatch({type: "CREATE_JOB", payload: data})
+        })
+        .catch(error => {
+            console.log(error)
         })
     }
 }

@@ -1,14 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { WithContext as ReactTags} from 'react-tag-input'
 
 import { createJob } from '../actions/jobs'
+
+const KeyCodes = {
+    comma: 188,
+    enter: 13,
+  };
+   
+const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 class JobForm extends React.Component {
     state = {
         title: "",
         description: "",
         status: "",
-        link: ""
+        link: "",
+        labels_attributes: []
     }
 
     handleChange = e => {
@@ -17,7 +26,20 @@ class JobForm extends React.Component {
         })
     }
 
+    handleDelete = (i) => {
+        const { labels_attributes } = this.state;
+        this.setState({
+         label_attributes: labels_attributes.filter((label, index) => index !== i),
+        });
+    }
+ 
+    handleAddition = (label) => {
+        let lowerLabel = Object.assign({}, label, {title: label.title.toLowerCase()})
+        this.setState(state => ({ labels_attributes: [...state.labels_attributes, lowerLabel] }));
+    }
+
     handleSubmit = e => {
+
         e.preventDefault()
         console.log("submitting . . .")
         this.props.createJob(this.state)
@@ -25,12 +47,14 @@ class JobForm extends React.Component {
             title: "",
             description: "",
             status: "Interested",
-            link: ""
+            link: "",
+            labels_attributes: []
         })
         this.props.toggleModal()
     }
 
     render() {
+        const { labels_attributes } = this.state
         return(
             <div>
                 <h2>New Job Form</h2>
@@ -50,6 +74,15 @@ class JobForm extends React.Component {
                     </select>
                     <h3>Link to Job Post</h3>
                     <input type="text" name="link" value={this.state.link} onChange={this.handleChange} placeholder="example.com/JobIWant" />
+                    <h3>Tags</h3>
+                    <ReactTags tags={labels_attributes}
+                        labelField={'title'}
+                        name={'labels_attributes'}
+                        inputFieldPosition="inline"
+                        handleDelete={this.handleDelete}
+                        handleAddition={this.handleAddition}
+                        allowDragDrop={false}
+                        delimiters={delimiters} />
                     <br/><br/>
                     <input type="submit" value="Create Job" /> <button className="cancelButton" onClick={e => this.props.onClose(e)}>Cancel</button>
                 </form>

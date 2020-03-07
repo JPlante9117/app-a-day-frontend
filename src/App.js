@@ -23,18 +23,11 @@ class App extends React.Component {
           <Router>
             <Route exact path={"/dashboard"} component={Dashboard} />
             <Route exact path={"/goals"} component={Goals} />
-            <Route exact path={"/jobs"} render={props => <Jobs jobs={this.props.jobs} />} />
+            <Route exact path={"/jobs"} component={Jobs} />
         </Router>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-      goals: state.goalsState.goals,
-      jobs: state.jobsState.jobs
-  }
-}
-
-export default connect(mapStateToProps, { getGoals, getJobs })(App)
+export default connect(null, { getGoals, getJobs })(App)
