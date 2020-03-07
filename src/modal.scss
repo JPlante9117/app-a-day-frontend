@@ -92,10 +92,16 @@
     line-height: 1;
     margin: 0.2em;
     width: 8em;
+    transition: 0.5s ease;
   }
 
   .markComplete {
     font-size: 1rem;
+  }
+
+  .markComplete:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
   }
 
   .removeGoal {

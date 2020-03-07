@@ -60,11 +60,12 @@ class JobForm extends React.Component {
                 <h2>New Job Form</h2>
                 <form onSubmit={this.handleSubmit} >
                     <h3>Job Title</h3>
-                    <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="What's the Job Title" maxLength="20"/>
+                    <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="What's the Job Title" maxLength="20" required/>
                     <h3>Brief Description</h3>
-                    <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="80" placeholder="Supply a brief description (max 80 characters)" />
+                    <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="80" placeholder="Supply a brief description (max 80 characters)" required/>
                     <h3>How Far Along Are You?</h3>
-                    <select name="status" value={this.state.status} onChange={this.handleChange}>
+                    <select name="status" value={this.state.status} onChange={this.handleChange} required>
+                        <option value=""> -- select an option -- </option>
                         <option value="Interested">Interested</option>
                         <option value="Applying">Applying</option>
                         <option value="Applied">Applied</option>
@@ -73,7 +74,7 @@ class JobForm extends React.Component {
                         <option value="Hired">Hired</option>
                     </select>
                     <h3>Link to Job Post</h3>
-                    <input type="text" name="link" value={this.state.link} onChange={this.handleChange} placeholder="example.com/JobIWant" />
+                    <input type="text" name="link" value={this.state.link} onChange={this.handleChange} placeholder="example.com/Job" required/>
                     <h3>Tags</h3>
                     <ReactTags tags={labels_attributes}
                         labelField={'title'}

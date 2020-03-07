@@ -1,6 +1,6 @@
 .jobCard {
     width: 20em;
-    height: 20em;
+    height: 40em;
     margin: 0.5em;
     border-radius: 10px;
     background: rgb(235, 235, 235);
@@ -40,7 +40,7 @@
 
   .jobStatusContainer {
       position: absolute;
-      bottom: 25%;
+      bottom: 12%;
       width: 100%;
       margin: -1em;
   }
@@ -81,4 +81,27 @@ div.ReactTags__selected a.ReactTags__remove {
     color: #aaa;
     margin-left: 5px;
     cursor: pointer;
+}
+
+.labelTag {
+  display: inline-block;
+  border: none;
+  background: rgb(57, 126, 255);
+  color: white;
+  font-size: 10px;
+  padding: 5px;
+  margin: 0 5px;
+  border-radius: 2px;
+  margin: 5px;
+  border-radius: 50px;
+  width: 20%;
+  text-align: center;
+}
+
+.labelContainer {
+  position: absolute;
+  text-align: center;
+  margin-left: -1em;
+  width: 100%;
+  bottom: 15%;
 }

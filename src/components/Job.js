@@ -1,5 +1,6 @@
 import React from 'react'
 import '../jobs.css'
+import Label from './Label'
 
 const Job = props => {
 
@@ -16,7 +17,10 @@ const Job = props => {
                     </div>
                 </div>
                 <div>
-                    {/* tags: {props.job.labels.map(label => label.title)} */}
+                    <a href={link}>Link To Application</a>
+                </div>
+                <div className="labelContainer">
+                    {labels.map(label => <Label title={label.title} /> )}
                 </div>
                 <div className="jobButtonRowContainer">
                     <div className="jobButtonRow">
