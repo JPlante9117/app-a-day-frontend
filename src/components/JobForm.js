@@ -1,8 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { WithContext as ReactTags} from 'react-tag-input'
-
-import { createJob } from '../actions/jobs'
 
 const KeyCodes = {
     comma: 188,
@@ -29,20 +26,24 @@ class JobForm extends React.Component {
     handleDelete = (i) => {
         const { labels_attributes } = this.state;
         this.setState({
-         label_attributes: labels_attributes.filter((label, index) => index !== i),
+         labels_attributes: labels_attributes.filter((label, index) => index !== i),
         });
     }
  
     handleAddition = (label) => {
-        let lowerLabel = Object.assign({}, label, {title: label.title.toLowerCase()})
-        this.setState(state => ({ labels_attributes: [...state.labels_attributes, lowerLabel] }));
+        if (this.state.labels_attributes.length < 6){
+            let lowerLabel = Object.assign({}, label, {title: label.title.toLowerCase()})
+            this.setState(state => ({ labels_attributes: [...state.labels_attributes, lowerLabel] }));
+        }
+        if (this.state.labels_attributes.length === 6){
+            this.setState(state => ({full: "(max)"}))
+        }
     }
 
     handleSubmit = e => {
 
         e.preventDefault()
-        console.log("submitting . . .")
-        this.props.createJob(this.state)
+        this.props.handleOnSubmit(this.state)
         this.setState({
             title: "",
             description: "",
@@ -60,10 +61,10 @@ class JobForm extends React.Component {
                 <h2>New Job Form</h2>
                 <form onSubmit={this.handleSubmit} >
                     <h3>Job Title</h3>
-                    <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="What's the Job Title" maxLength="20" required/>
+                    <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="What's the Job Title" required/>
                     <h3>Brief Description</h3>
-                    <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="80" placeholder="Supply a brief description (max 80 characters)" required/>
-                    <h3>How Far Along Are You?</h3>
+                    <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="350" placeholder="Supply a brief description (max 350 characters)" required/>
+                    <h3>Where in the Application Process Are You?</h3>
                     <select name="status" value={this.state.status} onChange={this.handleChange} required>
                         <option value=""> -- select an option -- </option>
                         <option value="Interested">Interested</option>
@@ -75,7 +76,7 @@ class JobForm extends React.Component {
                     </select>
                     <h3>Link to Job Post</h3>
                     <input type="text" name="link" value={this.state.link} onChange={this.handleChange} placeholder="example.com/Job" required/>
-                    <h3>Tags</h3>
+                    <h3>Tags (max 6)</h3>
                     <ReactTags tags={labels_attributes}
                         labelField={'title'}
                         name={'labels_attributes'}
@@ -92,4 +93,4 @@ class JobForm extends React.Component {
     }
 }
 
-export default connect(null, { createJob })(JobForm)
+export default JobForm

@@ -16,11 +16,11 @@ const Job = props => {
                         {status}
                     </div>
                 </div>
-                <div>
+                <div className="linkContainer">
                     <a href={link}>Link To Application</a>
                 </div>
                 <div className="labelContainer">
-                    {labels.map(label => <Label title={label.title} /> )}
+                    {labels.map(label => <Label key={label.id} title={label.title} /> )}
                 </div>
                 <div className="jobButtonRowContainer">
                     <div className="jobButtonRow">

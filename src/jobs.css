@@ -27,6 +27,12 @@
       padding: 1.5em;
   }
 
+  .linkContainer {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+  }
+
   .jobButtonRowContainer {
     position: absolute;
     width: 100%;
@@ -89,12 +95,15 @@ div.ReactTags__selected a.ReactTags__remove {
   background: rgb(57, 126, 255);
   color: white;
   font-size: 10px;
-  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin: 0 5px;
   border-radius: 2px;
   margin: 5px;
   border-radius: 50px;
-  width: 20%;
+  min-width: 20%;
   text-align: center;
 }
 

@@ -2,8 +2,6 @@ import React from 'react'
 import '../goal.css'
 import Moment from 'react-moment'
 
-//PRESENTATIONAL COMPONENT
-
 const Goal = props => {
     
     const { title, description, due_date, completed} = props.goal

@@ -4,7 +4,7 @@ import Modal from '../components/Modal'
 import JobForm from '../components/JobForm'
 import { connect } from 'react-redux'
 
-import { deleteJob, updateJob } from '../actions/jobs'
+import { createJob, deleteJob, updateJob } from '../actions/jobs'
 
 class Jobs extends React.Component {
 
@@ -26,14 +26,18 @@ class Jobs extends React.Component {
         })
     }
 
+    handleNewSubmit = (job) => {
+        this.props.createJob(job)
+    }
+
     render(){
-        let renderJobs = this.props.jobs.map(job => <Job job={job} handleOnDeleteClick={this.handleDeleteClick} handleOnEditClick={this.handleEditClick} />)
+        let renderJobs = this.props.jobs.map(job => <Job key={job.id} job={job} handleOnDeleteClick={this.handleDeleteClick} handleOnEditClick={this.handleEditClick} />)
         
         return(
             <div>
                 <button className="createJob" onClick={this.toggleModal}>Interested in a New Job?</button>
                 <Modal onClose={this.toggleModal} show={this.state.show} >
-                    <JobForm toggleModal={this.toggleModal} onClose={this.toggleModal} />
+                    <JobForm toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleNewSubmit} />
                 </Modal>
                 <h2>JOBS</h2>
                 {renderJobs}
@@ -48,4 +52,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { deleteJob, updateJob })(Jobs)
+export default connect(mapStateToProps, { createJob, deleteJob, updateJob })(Jobs)
