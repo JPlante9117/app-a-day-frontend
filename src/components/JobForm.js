@@ -59,6 +59,7 @@ class JobForm extends React.Component {
                         <option value="Interested">Interested</option>
                         <option value="Applying">Applying</option>
                         <option value="Applied">Applied</option>
+                        <option value="Interviewing">Interviewing</option>
                         <option value="Offered">Job Offered</option>
                         <option value="Declined">Declined</option>
                         <option value="Hired">Hired</option>

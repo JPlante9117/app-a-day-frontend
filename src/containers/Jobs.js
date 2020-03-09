@@ -18,7 +18,9 @@ class Jobs extends React.Component {
             labels: []
         },
         show: false,
-        form: ''
+        form: '',
+        filter: '',
+        jobs: []
     }
 
     handleDeleteClick = id => {
@@ -44,7 +46,8 @@ class Jobs extends React.Component {
                 labels: []
             },
             show: !this.state.show,
-            form: ''
+            form: '',
+            filter: ''
         })
     }
 
@@ -58,9 +61,40 @@ class Jobs extends React.Component {
         this.toggleModal()
     }
 
+    filterChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    filterJobs = (event, jobs) => {
+        event.preventDefault()
+
+        const included = (element) => {
+            return element.title.indexOf(this.state.filter.toLowerCase()) > -1
+        }
+       let newJobs = jobs.filter(job => job.props.job.labels.some(included))
+       this.setState(prevState => ({
+           ...prevState,
+           jobs: newJobs
+       }))
+    }
+
     render(){
         let renderJobs = this.props.jobs.map(job => <Job key={job.id} job={job} handleOnDeleteClick={this.handleDeleteClick} handleOnEditClick={this.handleEditClick} />)
         
+        const jobDisplay = () => {
+            if ("this thing here", this.state.filter) {
+                if (this.state.jobs.length === 0){
+                    return <h2>No Jobs With Those Tags</h2>
+                } else {
+                    return this.state.jobs
+                }
+            } else {
+                return renderJobs
+            }
+        }
+
         return(
             <div>
                 <button className="createJob" onClick={this.toggleModal}>Interested in a New Job?</button>
@@ -68,7 +102,13 @@ class Jobs extends React.Component {
                     <JobForm job={this.state.job} buttonLabel={this.state.form === 'edit' ? "Update Job" : "Create Job"} toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleSubmit}/>
                 </Modal>
                 <h2>JOBS</h2>
-                {renderJobs}
+                <div className="filter">
+                    <form onChange={(event) => this.filterJobs(event, renderJobs)}>
+                        <input type="text" onChange={this.filterChange} value={this.state.filter} name="filter" />
+                        <input type="submit" value="Search" />
+                    </form>
+                </div>
+                {jobDisplay()}
             </div>
         )
     }
