@@ -15,7 +15,7 @@
     border-radius: 10px;
     z-index: 2;
     position: absolute;
-    top: 30%;
+    top: 35%;
     left: 50%;
     margin-left: -250px;
     width: 500px;
@@ -28,6 +28,7 @@
     transform: scale(1);  
     opacity: 1;
     visibility: visible;
+    animation: animatetop 0.4s;
 
     &.off {
       opacity: 0;
@@ -113,3 +114,10 @@
     background: lightgray;
   }
   
+  @keyframes animatetop{
+    from{
+      top:-300px;opacity:0
+    } to{
+      top: 35%;opacity:1
+    }
+  }

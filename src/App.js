@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Jobs from './containers/Jobs'
 import Goals from './containers/Goals'
+import NavBar from './components/NavBar';
 
 class App extends React.Component {
 
@@ -20,10 +21,11 @@ class App extends React.Component {
   render(){
     return (
       <div>
-          <Router>
-            <Route exact path={"/dashboard"} component={Dashboard} />
-            <Route exact path={"/goals"} component={Goals} />
-            <Route exact path={"/jobs"} component={Jobs} />
+        <Router>
+          <NavBar />
+          <Route exact path={"/dashboard"} component={Dashboard} />
+          <Route exact path={"/goals"} component={Goals} />
+          <Route exact path={"/jobs"} component={Jobs} />
         </Router>
       </div>
     );

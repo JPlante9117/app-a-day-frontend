@@ -15,7 +15,12 @@ class JobForm extends React.Component {
         description: this.props.job.description,
         status: this.props.job.status,
         link: this.props.job.link,
-        labels_attributes: this.props.job.labels.map(label => label)
+        labels_attributes: this.props.job.labels.map(label => {
+            return {
+                id: label.title,
+                title: label.title
+            }
+        })
     }
 
     handleChange = e => {
@@ -36,24 +41,7 @@ class JobForm extends React.Component {
             let lowerLabel = Object.assign({}, label, {title: label.title.toLowerCase()})
             this.setState(state => ({ labels_attributes: [...state.labels_attributes, lowerLabel] }));
         }
-        if (this.state.labels_attributes.length === 6){
-            this.setState(state => ({full: "(max)"}))
-        }
     }
-
-    // handleSubmit = e => {
-
-    //     e.preventDefault()
-    //     this.props.handleOnSubmit(this.state)
-    //     this.setState({
-    //         title: this.props.job.title,
-    //         description: this.props.job.description,
-    //         status: this.props.job.status,
-    //         link: this.props.job.link,
-    //         labels_attributes: [...this.props.job.labels_attributes]
-    //     })
-    //     this.props.toggleModal()
-    // }
 
     render() {
         const { labels_attributes } = this.state
