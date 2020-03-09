@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { createGoal } from '../actions/goals'
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
 
 class GoalForm extends React.Component {
 
@@ -18,6 +20,12 @@ class GoalForm extends React.Component {
         })
     }
 
+    handleDateChange = date => {
+        this.setState({
+            due_date: date
+        })
+    }
+
     handleSubmit = e => {
         e.preventDefault()
         console.log("submitting . . .")
@@ -26,7 +34,7 @@ class GoalForm extends React.Component {
             title: "",
             description: "",
             completed: false,
-            due_date: ""
+            due_date: new Date()
         })
         this.props.toggleModal()
     }
@@ -41,7 +49,9 @@ class GoalForm extends React.Component {
                     <h3>Describe the Goal</h3>
                     <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="80" placeholder="Supply a brief description (max 80 characters)" required />
                     <h3>When Do You Want It Done?</h3>
-                    <input type="text" name="due_date" value={this.state.due_date} onChange={this.handleChange} placeholder="DD/MM/YYYY" maxLength="10" required />
+                    <div className="calendarContainer">
+                        <Calendar onChange={this.handleDateChange} value={this.state.due_date} />
+                    </div>
                     <br/><br/>
                     <input type="submit" value="Set Goal" /> <button className="cancelButton" onClick={e => this.props.onClose(e)}>Cancel</button>
                 </form>

@@ -45,4 +45,10 @@
     text-align: center;
   }
 
+  .calendarContainer {
+    align-content: center;
+    text-align: center;
+    padding-left: 50%;
+    margin-left: -175px;
+  }
   
