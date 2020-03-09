@@ -96,13 +96,13 @@ class Jobs extends React.Component {
         }
 
         return(
-            <div>
+            <div className="container">
                 <button className="createJob" onClick={this.toggleModal}>Interested in a New Job?</button>
                 <Modal onClose={this.toggleModal} show={this.state.show} >
                     <JobForm job={this.state.job} buttonLabel={this.state.form === 'edit' ? "Update Job" : "Create Job"} toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleSubmit}/>
                 </Modal>
                 <h2>JOBS</h2>
-                <div className="filter">
+                <div className="filterContainer">
                     <form onChange={(event) => this.filterJobs(event, renderJobs)}>
                         <input type="text" onChange={this.filterChange} value={this.state.filter} name="filter" />
                         <input type="submit" value="Search" />

@@ -114,3 +114,8 @@ div.ReactTags__selected a.ReactTags__remove {
   width: 100%;
   bottom: 15%;
 }
+
+.filterContainer {
+  width: 70%;
+  text-align: center;
+}
