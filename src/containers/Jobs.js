@@ -9,25 +9,53 @@ import { createJob, deleteJob, updateJob } from '../actions/jobs'
 class Jobs extends React.Component {
 
     state = {
-        show: false
+        job: {
+            id: "",
+            title: "",
+            description: "",
+            status: "",
+            link: "",
+            labels: []
+        },
+        show: false,
+        form: ''
     }
 
     handleDeleteClick = id => {
         this.props.deleteJob(id)
     }
 
-    handleEditClick = job => {
-        this.props.updateJob(job)
+    handleEditClick = (job) => {
+        this.setState({
+            job: job,
+            show: !this.state.show,
+            form: 'edit'
+        })
     }
 
     toggleModal = e => {
         this.setState({
-            show: !this.state.show
+            job: {
+                id: "",
+                title: "",
+                description: "",
+                status: "",
+                link: "",
+                labels: []
+            },
+            show: !this.state.show,
+            form: ''
         })
     }
 
-    handleNewSubmit = (job) => {
-        this.props.createJob(job)
+    handleSubmit = (event, job) => {
+        event.preventDefault()
+        if (this.state.form === 'edit') {
+            this.props.updateJob(job)
+        } else {
+            this.props.createJob(job)
+        }
+        this.toggleModal()
     }
 
     render(){
@@ -37,7 +65,7 @@ class Jobs extends React.Component {
             <div>
                 <button className="createJob" onClick={this.toggleModal}>Interested in a New Job?</button>
                 <Modal onClose={this.toggleModal} show={this.state.show} >
-                    <JobForm toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleNewSubmit} />
+                    <JobForm job={this.state.job} buttonLabel={this.state.form === 'edit' ? "Update Job" : "Create Job"} toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleSubmit}/>
                 </Modal>
                 <h2>JOBS</h2>
                 {renderJobs}

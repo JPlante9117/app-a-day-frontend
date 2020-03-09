@@ -10,11 +10,12 @@ const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 class JobForm extends React.Component {
     state = {
-        title: "",
-        description: "",
-        status: "",
-        link: "",
-        labels_attributes: []
+        id: this.props.job.id,
+        title: this.props.job.title,
+        description: this.props.job.description,
+        status: this.props.job.status,
+        link: this.props.job.link,
+        labels_attributes: this.props.job.labels.map(label => label)
     }
 
     handleChange = e => {
@@ -40,26 +41,26 @@ class JobForm extends React.Component {
         }
     }
 
-    handleSubmit = e => {
+    // handleSubmit = e => {
 
-        e.preventDefault()
-        this.props.handleOnSubmit(this.state)
-        this.setState({
-            title: "",
-            description: "",
-            status: "Interested",
-            link: "",
-            labels_attributes: []
-        })
-        this.props.toggleModal()
-    }
+    //     e.preventDefault()
+    //     this.props.handleOnSubmit(this.state)
+    //     this.setState({
+    //         title: this.props.job.title,
+    //         description: this.props.job.description,
+    //         status: this.props.job.status,
+    //         link: this.props.job.link,
+    //         labels_attributes: [...this.props.job.labels_attributes]
+    //     })
+    //     this.props.toggleModal()
+    // }
 
     render() {
         const { labels_attributes } = this.state
         return(
             <div>
                 <h2>New Job Form</h2>
-                <form onSubmit={this.handleSubmit} >
+                <form onSubmit={(event) => this.props.handleOnSubmit(event, this.state)} >
                     <h3>Job Title</h3>
                     <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="What's the Job Title" required/>
                     <h3>Brief Description</h3>
@@ -86,7 +87,7 @@ class JobForm extends React.Component {
                         allowDragDrop={false}
                         delimiters={delimiters} />
                     <br/><br/>
-                    <input type="submit" value="Create Job" /> <button className="cancelButton" onClick={e => this.props.onClose(e)}>Cancel</button>
+                    <input type="submit" value={this.props.buttonLabel} /> <button className="cancelButton" onClick={e => this.props.onClose(e)}>Cancel</button>
                 </form>
             </div>
         )

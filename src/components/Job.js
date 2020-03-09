@@ -4,7 +4,7 @@ import Label from './Label'
 
 const Job = props => {
 
-    const { title, description, status, link, labels} = props.job
+    const { id, title, description, status, link, labels} = props.job
 
     return(
         <div className="jobCard" >
@@ -24,8 +24,8 @@ const Job = props => {
                 </div>
                 <div className="jobButtonRowContainer">
                     <div className="jobButtonRow">
-                        <button className="updateJob" onClick={() => props.handleOnEditClick(props.job)}>Update Job</button>
-                        <button className="removeJob" onClick={() => props.handleOnDeleteClick(props.job.id)}>Remove Job</button>
+                        <button id={id} className="updateJob" onClick={() => props.handleOnEditClick(props.job)}>Update Job</button>
+                        <button className="removeJob" onClick={() => props.handleOnDeleteClick(id)}>Remove Job</button>
                     </div>
                 </div>
             </div>
