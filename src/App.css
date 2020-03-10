@@ -14,7 +14,9 @@
     padding-right: 5%;
 }
 
-.navbar {
+.calendar-container {
+    position: relative;
+    background-color: white;
     width: 100%;
-    display: inline-block;
+    padding: 10px;
 }

@@ -28,7 +28,6 @@ class GoalForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log("submitting . . .")
         this.props.createGoal(this.state)
         this.setState({
             title: "",
@@ -47,7 +46,7 @@ class GoalForm extends React.Component {
                     <h3>Name the Goal</h3>
                     <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="Give the Goal a Title" maxLength="20" required />
                     <h3>Describe the Goal</h3>
-                    <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="80" placeholder="Supply a brief description (max 80 characters)" required />
+                    <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="100" placeholder="Supply a brief description (max 100 characters)" required />
                     <h3>When Do You Want It Done?</h3>
                     <div className="calendarContainer">
                         <Calendar onChange={this.handleDateChange} value={this.state.due_date} />

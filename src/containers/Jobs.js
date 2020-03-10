@@ -84,7 +84,7 @@ class Jobs extends React.Component {
         let renderJobs = this.props.jobs.map(job => <Job key={job.id} job={job} handleOnDeleteClick={this.handleDeleteClick} handleOnEditClick={this.handleEditClick} />)
         
         const jobDisplay = () => {
-            if ("this thing here", this.state.filter) {
+            if (this.state.filter) {
                 if (this.state.jobs.length === 0){
                     return <h2>No Jobs With Those Tags</h2>
                 } else {

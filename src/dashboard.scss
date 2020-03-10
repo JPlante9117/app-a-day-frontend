@@ -1,0 +1,210 @@
+// Sass tils
+$color-fiord: #394263; // sidenav bg & dark text
+$color-white: #FFF; // card bg
+$color-athens-gray: #EAEDF1; // content bg
+$color-catskill-white: #F9FAFC; // top nav bg
+$color-abbey: #777; // gray text
+$color-mischka: #DADAE3; // light gray for menu icon
+$color-java: #1BBAE1; // blue text
+$color-mine-shaft: #333; // main section header bg
+$color-zest: #e67e22; // document icon bg
+$color-jungle-green: #27ae60; // calendar icon bg
+$color-cinnabar: #e74c3c; // main icon bg, red
+$color-amethyst: #af64cc; // main photo icon bg
+$color-transparent: rgba(255, 255, 255, .5);
+$color-alto: #D3D3D3;
+
+$height-footer: 50px;
+$width-sidenav: 240px;
+
+@mixin box-shadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+// Resets
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+a {
+  text-decoration: none;
+}
+
+// Util classes
+.text-light {
+  font-weight: 300;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+
+  &--align-v-center {
+    align-items: center;
+  }
+
+  &--align-h-center {
+    justify-content: center;
+  }
+}
+
+// Establish dashboard css grid layout - mobile
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100%; // Charts responsiveness won't work with fr units
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    'main';
+  height: 100vh;
+  overflow-x: hidden; // Prevent overflow scroll from hidden sidenav
+
+  &--noscroll {
+    overflow-y: hidden;
+  }
+}
+
+.main {
+  grid-area: main;
+  background-color: $color-athens-gray;
+  color: $color-fiord;
+
+  &__cards {
+    display: block;
+    column-count: 1;
+    column-gap: 20px;
+    margin: 20px;
+  }
+}
+
+// Overview quicklink cards container
+.main-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  grid-auto-rows: 94px;
+  grid-gap: 30px;
+  margin: 20px;
+}
+
+.overviewCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: $color-white;
+  transform: translateY(0);
+  transition: all .3s;
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    font-size: 21px;
+    color: #fff;
+
+    &--document {
+      background-color: $color-zest;
+    }
+
+    &--calendar {
+      background-color: $color-jungle-green;
+    }
+
+    &--mail {
+      background-color: $color-cinnabar;
+    }
+
+    &--photo {
+      background-color: $color-amethyst;
+    }
+  }
+
+  &-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-title {
+    font-size: 18px;
+    color: $color-java;
+    margin: 0;
+  }
+
+  &-subtitle {
+    margin: 2px;
+    color: $color-abbey;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    cursor: pointer;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20px;
+  -webkit-column-break-inside: avoid;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: $color-fiord;
+    color: $color-white;
+
+    &-title {
+      margin: 0 20px;
+      font-size: 20px;
+      letter-spacing: 1.2px;
+    }
+
+    &-link {
+      font-size: 16px;
+      color: $color-java;
+      letter-spacing: normal;
+      display: inline-block;
+    }
+  }
+
+  &__main {
+    position: relative;
+    padding-right: 20px;
+    background-color: $color-white;
+  }
+}
+
+// Mobile screen breakpoints (750px)
+@media only screen and (min-width: 46.875em) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'main';
+    height: 100vh;
+  }
+}
+
+// Medium screens breakpoint (1050px)
+@media only screen and (min-width: 65.625em) {
+  .main {
+    &__cards {
+      column-count: 2;
+    }
+  }
+}

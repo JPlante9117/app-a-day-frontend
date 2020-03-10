@@ -8,8 +8,8 @@ const Goal = props => {
 
     return(
         <div className="goalCard" >
+            <div className="goalTitle">{title}</div>
             <div className="goalContent">
-                <div className="goalTitle">{title}</div>
                 <div className="goalDescription">{description}</div>
                 <div className="goalDuedate">
                     <div className="centered">

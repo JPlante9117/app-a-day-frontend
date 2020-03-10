@@ -2,24 +2,34 @@
     width: 20em;
     height: 20em;
     margin: 0.5em;
-    border-radius: 10px;
-    background: rgb(235, 235, 235);
-    display: inline-flex;
+    background: rgb(255, 255, 255);
+    display: inline-block;
     color: black;
-    box-shadow:10px 10px 5px rgb(211, 211, 211);
+    transition: all 0.5s;
+    border-radius: 5px;
+  }
+
+  .goalCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    cursor: pointer;
   }
 
   .goalContent {
     position: relative;
-    padding: 1em;
-    width: 100%
+    display: inline-flex;
+    width: 100%;
+    height: 83%;
   }
 
   .goalTitle {
-      text-align: center;
-      font-size: 1.5rem;
-      border-bottom: 5px dotted gray;
-      padding-bottom: 5px;
+    background-color: #394263;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    padding-bottom: 5px;
+    border-radius: 5px 5px 0 0;
+    line-height: 2;
   }
 
   .goalDescription {
@@ -30,6 +40,8 @@
   .goalButtonRow {
     position: absolute;
     bottom: 1%;
+    left: 50%;
+    margin-left: -135px;
   }
 
   .goalDuedate {
@@ -38,7 +50,8 @@
     width: 100%;
     font-weight: bold;
     font-size: 1.5rem;
-    margin: -1em;
+    left: 50%;
+    margin-left: -160px;
   }
 
   .centered {

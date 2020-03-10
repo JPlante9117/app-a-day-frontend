@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #EAEDF1;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
 code {
