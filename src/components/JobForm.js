@@ -50,7 +50,7 @@ class JobForm extends React.Component {
                 <h2>New Job Form</h2>
                 <form onSubmit={(event) => this.props.handleOnSubmit(event, this.state)} >
                     <h3>Job Title</h3>
-                    <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="What's the Job Title" required/>
+                    <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="What's the Job Title" maxLength="28" required/>
                     <h3>Brief Description</h3>
                     <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleChange} maxLength="350" placeholder="Supply a brief description (max 350 characters)" required/>
                     <h3>Where in the Application Process Are You?</h3>

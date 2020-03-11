@@ -2,42 +2,56 @@
     width: 20em;
     height: 40em;
     margin: 0.5em;
-    border-radius: 10px;
-    background: rgb(235, 235, 235);
-    display: inline-flex;
+    border-radius: 5px;
+    background: white;
+    display: inline-block;
     color: black;
-    box-shadow:10px 10px 5px rgb(211, 211, 211);
+    transition: all 0.5s;
+  }
+
+  .jobCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    cursor: pointer;
   }
 
   .jobContent {
     position: relative;
+    display: inline-flex;
     padding: 1em;
-    width: 100%
+    width: 100%;
+    height: 85%;
   }
 
   .jobTitle {
-      text-align: center;
-      font-size: 1.5rem;
-      border-bottom: 5px dotted gray;
-      padding-bottom: 5px;
+    background-color: #394263;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    padding-bottom: 5px;
+    border-radius: 5px 5px 0 0;
+    line-height: 2;
   }
 
   .jobDescription {
       font-size: 1.2rem;
-      padding: 1.5em;
   }
 
   .linkContainer {
+    position: absolute;
+    bottom: 25%;
     width: 100%;
-    text-align: center;
-    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    left: 50%;
+    margin-left: -160px;
   }
 
   .jobButtonRowContainer {
     position: absolute;
-    width: 100%;
     bottom: 1%;
-    margin-left: -1em;
+    left: 50%;
+    margin-left: -135px;
   }
 
   .jobButtonRow {

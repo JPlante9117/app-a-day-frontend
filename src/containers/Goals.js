@@ -32,7 +32,7 @@ class Goals extends React.Component {
     renderPastDue = (goals) => {
         return(
             <div className="pastDueGoals">
-                <h2>PAST DUE</h2>
+                <h2>Past Due!</h2>
                 {goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)}
                 <div className="divider" />
             </div>
