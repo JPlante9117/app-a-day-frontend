@@ -39,16 +39,25 @@ class Goals extends React.Component {
         )
     }
 
+    renderCompletedGoals = (goals) => {
+        return(
+            <div className="completedGoals">
+                <hr />
+                <h2>Completed Goals</h2>
+                {goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)}
+            </div>
+        )
+    }
+
     render(){
         let goals = this.props.goals.filter(goal => goal.completed === false).sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
         let pastDue = goals.filter(goal => new Date(goal.due_date) < new Date(moment()))
         goals = goals.filter(goal => !pastDue.includes(goal))
         let completedGoals = this.props.goals.filter(goal => goal.completed === true).sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
         let renderGoals = goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)
-        let renderCompletedGoals = completedGoals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)
 
         return(
-            <div>
+            <div className="container">
                 <div className="goalNewRow">
                     <button className="createGoal" onClick={this.toggleModal}>Set New Goal</button>
                 </div>
@@ -60,9 +69,7 @@ class Goals extends React.Component {
                     <h2>Current Goals</h2>
                     {renderGoals}
                 </div>
-                <hr />
-                <h2>Completed Goals</h2>
-                {renderCompletedGoals}
+                {completedGoals.length > 0 ? this.renderCompletedGoals(completedGoals) : null}
                 
             </div>
         )
