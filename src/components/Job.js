@@ -17,7 +17,7 @@ const Job = props => {
                     </div>
                 </div>
                 <div className="linkContainer">
-                    <a href={link}>Link To Application</a>
+                    <a href={link} style={{color: "navy"}} target="_blank">Link To Application</a>
                 </div>
                 <div className="labelContainer">
                     {labels.map(label => <Label key={label.id} title={label.title} /> )}

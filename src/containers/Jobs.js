@@ -102,7 +102,7 @@ class Jobs extends React.Component {
     }
 
     render(){
-        let renderJobs = this.props.jobs.map(job => <Job key={job.id} job={job} handleOnDeleteClick={this.handleDeleteClick} handleOnEditClick={this.handleEditClick} />)
+        let renderJobs = this.props.jobs.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).map(job => <Job key={job.id} job={job} handleOnDeleteClick={this.handleDeleteClick} handleOnEditClick={this.handleEditClick} />)
         
         const jobDisplay = () => {
             if (this.state.filter) {
@@ -123,6 +123,7 @@ class Jobs extends React.Component {
                     <JobForm job={this.state.job} buttonLabel={this.state.form === 'edit' ? "Update Job" : "Create Job"} toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleSubmit}/>
                 </Modal>
                 <h2>JOBS</h2>
+
                 <div className="filterContainer" onSubmit={this.filterSubmit}>
                     <form onChange={(event) => this.filterJobs(event, renderJobs)}>
                         <input type="text" onChange={this.filterChange} value={this.state.filter} name="filter" />

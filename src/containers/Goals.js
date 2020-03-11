@@ -49,12 +49,22 @@ class Goals extends React.Component {
         )
     }
 
+    renderIncompleteGoals = (goals, pastDue) => {
+        return(
+            <div className="currentGoals">
+                {pastDue.length > 0 ? <hr /> : null}
+                <h2>Current Goals</h2>
+                {goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)}
+            </div>
+        )
+    }
+
     render(){
         let goals = this.props.goals.filter(goal => goal.completed === false).sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
         let pastDue = goals.filter(goal => moment(goal.due_date).isBefore(moment().startOf('day')))
         goals = goals.filter(goal => !pastDue.includes(goal))
         let completedGoals = this.props.goals.filter(goal => goal.completed === true).sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
-        let renderGoals = goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)
+goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)
 
         return(
             <div className="container">
@@ -65,10 +75,7 @@ class Goals extends React.Component {
                     <GoalForm toggleModal={this.toggleModal} onClose={this.toggleModal} />
                 </Modal>
                 {pastDue.length > 0 ? this.renderPastDue(pastDue) : null}
-                <div className="currentGoals">
-                    <h2>Current Goals</h2>
-                    {renderGoals}
-                </div>
+                {goals.length > 0 ? this.renderIncompleteGoals(goals, pastDue) : null }
                 {completedGoals.length > 0 ? this.renderCompletedGoals(completedGoals) : null}
                 
             </div>

@@ -71,10 +71,11 @@
   }
 
   .currentGoals {
-    display: inline-block;
+    display: block;
+    flex-wrap: wrap;
   }
 
-  .divider{
+  /* .divider{
     border-left: 3px solid #e0e0e0;
     border-radius: 50%;
     height:20em;
@@ -82,13 +83,13 @@
     display: inline-block;
     bottom: 10px;
     margin-left: 5px;
-}
+} */
 
   .goalNewRow {
     display: block;
   }
 
-  .markComplete, .cancelButton, .removeGoal, .createGoal  {
+  .markComplete, .removeGoal, .createGoal  {
     border: 0;
     background: #78f89f;
     border-radius: 5px;

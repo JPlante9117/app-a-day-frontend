@@ -152,3 +152,19 @@ div.ReactTags__selected a.ReactTags__remove {
   margin-top: 10px;
   display: block;
 }
+
+.cards-slider-wrapper {
+  position: absolute;
+  display: flex;
+}
+
+.cards-slider {
+  position: relative;
+  max-width: 20em;
+  margin: 0 auto;
+}
+
+.cards-slider .jobCard {
+  flex: 1;
+  min-width: 20em;
+}
