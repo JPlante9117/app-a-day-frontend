@@ -3,6 +3,7 @@ import Job from '../components/Job'
 import Modal from '../components/Modal'
 import JobForm from '../components/JobForm'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { createJob, deleteJob, updateJob } from '../actions/jobs'
 
@@ -17,7 +18,7 @@ class Jobs extends React.Component {
             link: "",
             labels: []
         },
-        show: false,
+        show: this.props.showModal,
         form: '',
         filter: '',
         jobs: []
@@ -80,6 +81,26 @@ class Jobs extends React.Component {
        }))
     }
 
+    filterSubmit = e => {
+        e.preventDefault()
+    }
+
+    resetFilterClick = e => {
+        e.preventDefault()
+        this.setState(prevState => ({
+            ...prevState,
+            filter: ''
+        }))
+    }
+
+    resetFilterDisabled = () => {
+        if (this.state.filter){
+            return ''
+        } else {
+            return "disabled"
+        }
+    }
+
     render(){
         let renderJobs = this.props.jobs.map(job => <Job key={job.id} job={job} handleOnDeleteClick={this.handleDeleteClick} handleOnEditClick={this.handleEditClick} />)
         
@@ -102,10 +123,10 @@ class Jobs extends React.Component {
                     <JobForm job={this.state.job} buttonLabel={this.state.form === 'edit' ? "Update Job" : "Create Job"} toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleSubmit}/>
                 </Modal>
                 <h2>JOBS</h2>
-                <div className="filterContainer">
+                <div className="filterContainer" onSubmit={this.filterSubmit}>
                     <form onChange={(event) => this.filterJobs(event, renderJobs)}>
                         <input type="text" onChange={this.filterChange} value={this.state.filter} name="filter" />
-                        <input type="submit" value="Search" />
+                        <button className="resetButton" disabled={this.resetFilterDisabled()} onClick={this.resetFilterClick}>Reset</button>
                     </form>
                 </div>
                 {jobDisplay()}

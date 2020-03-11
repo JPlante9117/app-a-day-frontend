@@ -19,7 +19,8 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  // overflow: hidden;
 }
 
 a {
@@ -55,7 +56,7 @@ a {
   grid-template-rows: 100%;
   grid-template-areas:
     'main';
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden; // Prevent overflow scroll from hidden sidenav
 
   &--noscroll {
@@ -104,20 +105,16 @@ a {
     font-size: 21px;
     color: #fff;
 
-    &--document {
+    &--apps {
       background-color: $color-zest;
     }
 
-    &--calendar {
+    &--comingup {
       background-color: $color-jungle-green;
     }
 
-    &--mail {
+    &--pastdue {
       background-color: $color-cinnabar;
-    }
-
-    &--photo {
-      background-color: $color-amethyst;
     }
   }
 
@@ -184,7 +181,7 @@ a {
     grid-template-rows: 1fr;
     grid-template-areas:
       'main';
-    height: 100vh;
+    height: 100%;
   }
 }
 

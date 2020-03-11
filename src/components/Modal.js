@@ -12,7 +12,7 @@ class Modal extends React.Component {
       return(
         <div>
         <div className="overlay" />
-          <div className="modal" id="modal">
+          <div className="modal" id="modal" onClick={this.props.onClick}>
             <div className="content">
               {this.props.children}
             </div>

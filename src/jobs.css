@@ -9,17 +9,16 @@
     transition: all 0.5s;
   }
 
-  .jobCard:hover {
+  .jobCard:hover, .createJob:hover, .updateJob:hover, .removeJob:hover, .resetButton:hover:enabled {
     transform: translateY(-3px);
     box-shadow: 0 5px 5px rgba(0,0,0,.1);
-    cursor: pointer;
   }
 
   .jobContent {
     position: relative;
     display: inline-flex;
     padding: 1em;
-    width: 100%;
+    width: 90%;
     height: 85%;
   }
 
@@ -38,8 +37,9 @@
   }
 
   .linkContainer {
+    text-align: center;
     position: absolute;
-    bottom: 25%;
+    bottom: 45%;
     width: 100%;
     font-weight: bold;
     font-size: 1.5rem;
@@ -49,9 +49,9 @@
 
   .jobButtonRowContainer {
     position: absolute;
-    bottom: 1%;
+    bottom: 0;
     left: 50%;
-    margin-left: -135px;
+    margin-left: -134px;
   }
 
   .jobButtonRow {
@@ -60,27 +60,42 @@
 
   .jobStatusContainer {
       position: absolute;
-      bottom: 12%;
+      bottom: 22%;
       width: 100%;
       margin: -1em;
   }
 
   .jobStatus {
     text-align: center;
-    font-weight: bold;
     font-size: 1.5rem;
   }
 
-  .updateJob, .removeJob {
+  .resetButton, .createJob, .updateJob, .removeJob {
     border: 0;
     background: #78f89f;
     border-radius: 5px;
     padding: 0.5rem 1rem;
-    font-size: 1.2rem;
     line-height: 1;
     margin: 0.2em;
     width: 8em;
     font-size: 1rem;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+  .resetButton {
+    background: rgb(255, 238, 0);
+    font-size: 1.2rem;
+  }
+
+  .resetButton:disabled {
+    filter: grayscale(1);
+    opacity: 0.5;
+  }
+
+  .createJob {
+    width: 13em;
+    font-size: 19.2px;
   }
 
   .removeJob {
@@ -124,12 +139,16 @@ div.ReactTags__selected a.ReactTags__remove {
 .labelContainer {
   position: absolute;
   text-align: center;
-  margin-left: -1em;
+  left: 0;
   width: 100%;
-  bottom: 15%;
+  bottom: 8%;
 }
 
 .filterContainer {
-  width: 70%;
-  text-align: center;
+  width: 40%;
+}
+
+.jobNewRow {
+  margin-top: 10px;
+  display: block;
 }

@@ -1,5 +1,5 @@
 .goalCard {
-    width: 20em;
+    width: 25em;
     height: 20em;
     margin: 0.5em;
     background: rgb(255, 255, 255);
@@ -12,7 +12,6 @@
   .goalCard:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 5px rgba(0,0,0,.1);
-    cursor: pointer;
   }
 
   .goalContent {
@@ -38,20 +37,19 @@
   }
 
   .goalButtonRow {
+    text-align: center;
     position: absolute;
+    width: 100%;
     bottom: 1%;
-    left: 50%;
-    margin-left: -135px;
   }
 
   .goalDuedate {
+    text-align: center;
     position: absolute;
     bottom: 25%;
     width: 100%;
     font-weight: bold;
     font-size: 1.5rem;
-    left: 50%;
-    margin-left: -160px;
   }
 
   .centered {
@@ -87,6 +85,36 @@
 }
 
   .goalNewRow {
-    margin-top: 10px;
     display: block;
+  }
+
+  .markComplete, .cancelButton, .removeGoal, .createGoal  {
+    border: 0;
+    background: #78f89f;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin: 0.2em;
+    width: 40%;
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+
+  .createGoal {
+    width: 8em;
+  }
+
+  .markComplete {
+    font-size: 1rem;
+  }
+
+  .markComplete:hover, .cancelButton:hover, .removeGoal:hover, .createGoal:hover, input[type=submit]:hover {
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    transform: translateY(-0.25em);
+  }
+
+  .removeGoal {
+    background: lightcoral;
+    font-size: 1rem;
   }

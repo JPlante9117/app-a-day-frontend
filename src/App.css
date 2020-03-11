@@ -10,8 +10,8 @@
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
-    padding-left: 5%;
-    padding-right: 5%;
+    margin: 20px;
+    padding-top: 15px;
 }
 
 .calendar-container {

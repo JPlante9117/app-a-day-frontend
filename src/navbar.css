@@ -7,7 +7,6 @@
     box-sizing: border-box;
     left: 0;
     top: 0;
-    transition: transform .3s ease-out, visibility .3s ease-out, -webkit-transform .3s ease-out;
     height: auto;
     opacity: 1;
     visibility: visible;
@@ -17,9 +16,10 @@
     display: block;
     margin: 0 auto;
     padding: 0;
-    position: static;
+    position: fixed;
     text-align: center;
     width: 100%;
+    z-index: 100;
 }
 
 .nav-wrapper-inner{
@@ -28,7 +28,7 @@
     box-sizing: border-box;
     width: 100%;
     max-width: none;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255);
     box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
     display: flex;
     -webkit-box-align: center;

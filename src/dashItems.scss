@@ -1,40 +1,40 @@
+
 .dashCardContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-    grid-auto-rows: 94px;
-    grid-gap: 30px;
-    margin: 20px;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  grid-auto-rows: 94px;
+  grid-gap: 30px;
+  margin: 20px;
+}
 
 .dashCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: white;
+  transform: translateY(0);
+  transition: all .3s;
+
+  &-description {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 12px;
-    background-color: white;
-    transform: translateY(0);
-    transition: all .3s;
-  
-    &-description {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    &-title {
-      font-size: 18px;
-      color: #1BBAE1;
-      margin: 0;
-    }
-  
-    &-subtitle {
-      margin: 2px;
-    //   color: $color-abbey;
-    }
-  
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 5px rgba(0,0,0,.1);
-      cursor: pointer;
-    }
   }
+
+  &-title {
+    font-size: 18px;
+    color: #1BBAE1;
+    margin: 0;
+  }
+
+  &-subtitle {
+    margin: 2px;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    cursor: pointer;
+  }
+}

@@ -51,7 +51,7 @@ class Goals extends React.Component {
 
     render(){
         let goals = this.props.goals.filter(goal => goal.completed === false).sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
-        let pastDue = goals.filter(goal => new Date(goal.due_date) < new Date(moment()))
+        let pastDue = goals.filter(goal => moment(goal.due_date).isBefore(moment().startOf('day')))
         goals = goals.filter(goal => !pastDue.includes(goal))
         let completedGoals = this.props.goals.filter(goal => goal.completed === true).sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
         let renderGoals = goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)

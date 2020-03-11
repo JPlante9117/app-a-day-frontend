@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import GoalCalendar from '../components/BigCalendar'
 import '../dashboard.scss'
 import moment from 'moment'
-import Goal from '../components/Goal'
 import DashGoal from '../components/DashGoal'
 import DashJob from '../components/DashJob'
 
@@ -30,10 +30,11 @@ class Dashboard extends React.Component {
 
     displayUCGoals = () => {
         let upcomingGoals = this.upcomingGoals()
+        debugger
         if (upcomingGoals.length <= 3){
-            return upcomingGoals.map(goal => <DashGoal goal={goal} /> )
+            return upcomingGoals.map(goal => <Link to={"/goals"}><DashGoal goal={goal} /></Link> )
         } else {
-            return upcomingGoals.slice(0, 3).map(goal => <DashGoal goal={goal} />)
+            return upcomingGoals.slice(0, 3).map(goal => <Link to={"/goals"}><DashGoal goal={goal} /></Link>)
         }
     }
 
@@ -64,36 +65,36 @@ class Dashboard extends React.Component {
     
     render() {
         return(
-            <div className="grid">
+            <div className="grid" style={{paddingTop: "20px"}}>
                 <main className="main">
                     <div className="main-overview">
-                        <div className="overviewCard">
-                            <div className="overviewCard-icon overviewCard-icon--document">
+                        <Link to={"/jobs"}><div className="overviewCard">
+                            <div className="overviewCard-icon overviewCard-icon--apps">
                                 <i className="far fa-file-alt"></i>
                             </div>
                             <div className="overviewCard-description">
                                 <h3 className="overviewCard-title text-light">Your Applications</h3>
                                 <p className="overviewCard-subtitle">{this.props.jobs.length} jobs</p>
                             </div>
-                        </div>
-                        <div className="overviewCard">
-                            <div className="overviewCard-icon overviewCard-icon--calendar">
+                        </div></Link>
+                        <Link to={"/goals"}><div className="overviewCard">
+                            <div className="overviewCard-icon overviewCard-icon--comingup">
                                 <i className="far fa-calendar-check"></i>
                             </div>
                             <div className="overviewCard-description">
                                 <h3 className="overviewCard-title text-light">This Week's Goals</h3>
-                                <p className="overviewCard-subtitle">{this.upcomingGoals().length}</p>
+                                <p className="overviewCard-subtitle">{this.upcomingGoals().length > 0 ? this.upcomingGoals().length : "All Caught Up! Set a New Goal!"}</p>
                             </div>
-                        </div>
-                        <div className="overviewCard">
-                            <div className="overviewCard-icon overviewCard-icon--mail">
+                        </div></Link>
+                        <Link to={"/goals"}><div className="overviewCard">
+                            <div className="overviewCard-icon overviewCard-icon--pastdue">
                                 <i className="far fa-envelope"></i>
                             </div>
                             <div className="overviewCard-description">
                                 <h3 className="overviewCard-title text-light">Past Due Goals</h3>
-                                <p className="overviewCard-subtitle">{this.pastDueGoals().length}</p>
+                                <p className="overviewCard-subtitle">{this.pastDueGoals().length > 0 ? this.pastDueGoals().length : "All Caught Up!"}</p>
                             </div>
-                        </div>
+                        </div></Link>
                     </div>
                     <div className="main__cards">
                         <div className="card">

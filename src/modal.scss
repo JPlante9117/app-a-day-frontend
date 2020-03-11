@@ -85,7 +85,7 @@
     font-size: 1.5em;
   }
 
-  input[type=submit], .markComplete, .cancelButton, .removeGoal, .createGoal  {
+  input[type=submit], .cancelButton  {
     border: 0;
     background: #78f89f;
     border-radius: 5px;
@@ -95,20 +95,7 @@
     margin: 0.2em;
     width: 8em;
     transition: 0.5s ease;
-  }
-
-  .markComplete {
-    font-size: 1rem;
-  }
-
-  .markComplete:hover, .cancelButton:hover, .removeGoal:hover, .createGoal:hover, input[type=submit]:hover {
-    box-shadow: 0 5px 5px rgba(0,0,0,.1);
-    transform: translateY(-0.25em);
-  }
-
-  .removeGoal {
-    background: lightcoral;
-    font-size: 1rem;
+    cursor: pointer;
   }
 
   .cancelButton {
