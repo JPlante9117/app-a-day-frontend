@@ -28,7 +28,6 @@ export const updateJob = (job) => {
 }
 
 export const createJob = job => {
-    debugger
     return dispatch => {
         dispatch({type: "LOADING_JOBS"})
         return fetch(`http://localhost:3001/jobs`, {

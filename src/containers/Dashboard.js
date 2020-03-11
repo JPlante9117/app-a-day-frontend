@@ -30,7 +30,6 @@ class Dashboard extends React.Component {
 
     displayUCGoals = () => {
         let upcomingGoals = this.upcomingGoals()
-        debugger
         if (upcomingGoals.length <= 3){
             return upcomingGoals.map(goal => <Link to={"/goals"}><DashGoal goal={goal} /></Link> )
         } else {
@@ -58,9 +57,8 @@ class Dashboard extends React.Component {
     }
 
     displayRecentJobs = () => {
-        debugger
         let recentJobs = this.props.jobs.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 3)
-        return recentJobs.map(job => <DashJob job={job} />)
+        return recentJobs.map(job => <Link to={"/goals"}><DashJob job={job} /></Link>)
     }
     
     render() {
