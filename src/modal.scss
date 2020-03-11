@@ -8,6 +8,7 @@
     opacity: 0.5;
     width: 100vw;
     height: 100vh;
+    z-index: 1;
   }
   
   .modal {
@@ -100,8 +101,8 @@
     font-size: 1rem;
   }
 
-  .markComplete:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  .markComplete:hover, .cancelButton:hover, .removeGoal:hover, .createGoal:hover, input[type=submit]:hover {
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
     transform: translateY(-0.25em);
   }
 

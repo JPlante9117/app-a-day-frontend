@@ -1,14 +1,24 @@
 import React from 'react'
 import '../goal.css'
 import Moment from 'react-moment'
+import moment from 'moment'
 
 const Goal = props => {
     
     const { title, description, due_date, completed} = props.goal
 
+    const headerColor = (goal) => {
+        let TODAY = moment().startOf('day')
+        if (goal.completed){
+            return 'green'
+        } else if (moment(goal.due_date).isBefore(TODAY, 'd')){
+            return 'red'
+        }
+    }
+
     return(
         <div className="goalCard" >
-            <div className="goalTitle">{title}</div>
+            <div className="goalTitle" style={{backgroundColor: headerColor(props.goal) }}>{title}</div>
             <div className="goalContent">
                 <div className="goalDescription">{description}</div>
                 <div className="goalDuedate">
