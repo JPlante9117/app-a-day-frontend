@@ -14,13 +14,6 @@ $color-amethyst: #af64cc; // main photo icon bg
 $color-transparent: rgba(255, 255, 255, .5);
 $color-alto: #D3D3D3;
 
-$height-footer: 50px;
-$width-sidenav: 240px;
-
-@mixin box-shadow {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-}
-
 // Resets
 html, body {
   margin: 0;
@@ -59,7 +52,7 @@ a {
   position: relative;
   display: grid;
   grid-template-columns: 100%; // Charts responsiveness won't work with fr units
-  grid-template-rows: 1fr;
+  grid-template-rows: 100%;
   grid-template-areas:
     'main';
   height: 100vh;
@@ -173,13 +166,6 @@ a {
       font-size: 20px;
       letter-spacing: 1.2px;
     }
-
-    &-link {
-      font-size: 16px;
-      color: $color-java;
-      letter-spacing: normal;
-      display: inline-block;
-    }
   }
 
   &__main {
@@ -191,11 +177,13 @@ a {
 
 // Mobile screen breakpoints (750px)
 @media only screen and (min-width: 46.875em) {
+  // Break out to sidenav grid layout on medium + screens
   .grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%; // Charts responsiveness won't work with fr units
     grid-template-rows: 1fr;
-    grid-template-areas: 'main';
+    grid-template-areas:
+      'main';
     height: 100vh;
   }
 }
