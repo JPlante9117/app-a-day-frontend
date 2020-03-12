@@ -8,10 +8,11 @@ import 'react-calendar/dist/Calendar.css'
 class GoalForm extends React.Component {
 
     state = {
-        title: "",
-        description: "",
-        completed: false,
-        due_date: ""
+        id: this.props.goal.id,
+        title: this.props.goal.title,
+        description: this.props.goal.description,
+        completed: this.props.goal.completed,
+        due_date: new Date(this.props.goal.due_date)
     }
 
     handleChange = e => {
@@ -26,23 +27,11 @@ class GoalForm extends React.Component {
         })
     }
 
-    handleSubmit = e => {
-        e.preventDefault()
-        this.props.createGoal(this.state)
-        this.setState({
-            title: "",
-            description: "",
-            completed: false,
-            due_date: new Date()
-        })
-        this.props.toggleModal()
-    }
-
     render() {
         return(
             <div>
                 <h2>Set a New Goal</h2>
-                <form onSubmit={this.handleSubmit} >
+                <form onSubmit={(event) => this.props.handleOnSubmit(event, this.state)} >
                     <h3>Name the Goal</h3>
                     <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="Give the Goal a Title" maxLength="20" required />
                     <h3>Describe the Goal</h3>
@@ -52,7 +41,7 @@ class GoalForm extends React.Component {
                         <Calendar onChange={this.handleDateChange} value={this.state.due_date} />
                     </div>
                     <br/><br/>
-                    <input type="submit" value="Set Goal" /> <button className="cancelButton" onClick={e => this.props.onClose(e)}>Cancel</button>
+                    <input type="submit" value={this.props.buttonLabel} /> <button className="cancelButton" onClick={e => this.props.onClose(e)}>Cancel</button>
                 </form>
             </div>
         )

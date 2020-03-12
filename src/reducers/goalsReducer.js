@@ -30,6 +30,15 @@ export default function goalsReducer(state={
                 })]
             }
 
+        case "UPDATE_COMPLETE":
+
+            return {
+                ...state,
+                goals: [...state.goals.map(goal => {
+                    return goal.id === action.payload.id ? action.payload : goal
+                })]
+            }
+
         case "CREATE_GOAL":
             return {
                 ...state,

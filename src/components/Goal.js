@@ -29,6 +29,7 @@ const Goal = props => {
                 <div className="goalButtonRow">
                     <button className="markComplete" onClick={() => props.handleOnCompleteClick(props.goal)}>{completed ? "Mark Incomplete" : "Mark Complete"}</button>
                     <button className="removeGoal" onClick={() => props.handleOnDeleteClick(props.goal.id)}>Remove Goal</button>
+                    <button id={props.goal.id} className="updateGoal" onClick={() => props.handleOnUpdateClick(props.goal)}>Update Goal</button>
                 </div>
             </div>
         </div>
