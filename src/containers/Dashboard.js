@@ -8,6 +8,7 @@ import DashGoal from '../components/DashGoal'
 import DashJob from '../components/DashJob'
 import ScrollAnimation from 'react-animate-on-scroll'
 
+
 class Dashboard extends React.Component {
 
     upcomingGoals = () => {
@@ -33,9 +34,9 @@ class Dashboard extends React.Component {
     displayUCGoals = () => {
         let upcomingGoals = this.upcomingGoals()
         if (upcomingGoals.length <= 3){
-            return upcomingGoals.map(goal => <Link to={"/goals"}><DashGoal goal={goal} /></Link> )
+            return upcomingGoals.map(goal => <Link key={goal.id} to={"/goals"}><DashGoal key={goal.id}  goal={goal} /></Link> )
         } else {
-            return upcomingGoals.slice(0, 3).map(goal => <Link to={"/goals"}><DashGoal goal={goal} /></Link>)
+            return upcomingGoals.slice(0, 3).map(goal => <Link key={goal.id} to={"/goals"}><DashGoal key={goal.id}  goal={goal} /></Link>)
         }
     }
 
@@ -60,14 +61,14 @@ class Dashboard extends React.Component {
 
     displayRecentJobs = () => {
         let recentJobs = this.props.jobs.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 3)
-        return recentJobs.map(job => <Link to={"/goals"}><DashJob job={job} /></Link>)
+        return recentJobs.map(job => <Link key={job.id} to={"/jobs"}><DashJob key={job.id}  job={job} /></Link>)
     }
     
     render() {
         return(
             <div className="grid" style={{paddingTop: "20px"}}>
                 <main className="main">
-                    <ScrollAnimation animateIn="fadeInDown" offset={0}>
+                    <ScrollAnimation animateIn="fadeInDown" offset={0} animateOnce={true}>
                     <div className="main-overview">
                         <Link to={"/jobs"}><div className="overviewCard">
                             <div className="overviewCard-icon overviewCard-icon--apps">

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../navbar.css'
+import logo from '../assets/app-a-daylogo.png'
 
 const NavBar = props => {
-    return(
-        <div className="nav-wrapper">
+        return(
+        <div className="nav-wrapper" style={{display: props.location.pathname === "/" ? "none" : null}}>
             <div className="nav-wrapper-inner">
                 <div className="nav-logo">
-                    LOGO
+                    <Link to="/" className="nav-link"><img className="logo" src={logo} /></Link>
                 </div>
                 <div className="nav-logo-ext">
                 </div>
@@ -31,7 +32,7 @@ const NavBar = props => {
             </div>
 
         </div>
-    )
+        )
 }
 
 export default NavBar

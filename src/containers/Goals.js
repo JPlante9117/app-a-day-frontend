@@ -69,7 +69,6 @@ class Goals extends React.Component {
             <div className="pastDueGoals">
                 <h2>Past Due!</h2>
                 {goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} handleOnUpdateClick={this.handleUpdateClick} />)}
-                <div className="divider" />
             </div>
         )
     }

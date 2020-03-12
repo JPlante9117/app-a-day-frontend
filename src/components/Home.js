@@ -1,6 +1,7 @@
 import React from 'react'
 import ScrollAnimation from 'react-animate-on-scroll'
 import { Redirect } from 'react-router-dom'
+import logo from '../assets/app-a-daylogo.png'
 
 export default class Home extends React.Component {
 
@@ -10,6 +11,7 @@ export default class Home extends React.Component {
 
     componentDidMount = () => {
         this.id = setTimeout(() => this.setState({redirect: true}), 5000)
+        
     }
 
     componentWillUnmount = () => {
@@ -18,10 +20,10 @@ export default class Home extends React.Component {
 
     render(){
         return(
-            <div className="homePage">
+            <div className={`homePage`}>
                 <ScrollAnimation animateIn="fadeInDown" duration={3} offset={0}>
                 
-                    <h1>~ app a day ~</h1>
+                    <img src={logo} />
                 
                 </ScrollAnimation>
                 {this.state.redirect ? <Redirect to="/dashboard" /> : null}

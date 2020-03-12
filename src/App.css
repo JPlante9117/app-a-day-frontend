@@ -11,7 +11,7 @@
     vertical-align: baseline;
     background: transparent;
     margin: 20px;
-    padding-top: 15px;
+    padding-top: 50px;
 }
 
 .calendar-container {
@@ -38,4 +38,41 @@ a:visited {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: 1s;
 }
+
+.homePage .fadeOut {
+    opacity: 0;
+}
+
+.errorPage {
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+.errorPage h1 {
+    font-size: 20em;
+    margin-bottom: 0;
+}
+
+.errorPage h2 {
+    font-size: 4em;
+}
+
+@-webkit-keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+ }
+ 
+ @keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+ }
+ 
+ .fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+ }

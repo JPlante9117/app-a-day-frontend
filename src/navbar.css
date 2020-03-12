@@ -50,6 +50,11 @@
     margin: -5px 0 -6px;
 }
 
+img.logo {
+    width: 200px;
+    height: 48px;
+}
+
 .nav-logo-ext {
     visibility: visible;
     max-width: 280px;

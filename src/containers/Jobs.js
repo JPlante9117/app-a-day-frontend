@@ -118,11 +118,13 @@ class Jobs extends React.Component {
 
         return(
             <div className="container">
-                <ScrollAnimation animateIn="fadeInDown" animateOnce={true}>
+                <ScrollAnimation animateIn="fadeInDown" animateOnce={true} offset={0}>
                 <button className="createJob" onClick={this.toggleModal}>Interested in a New Job?</button>
+                </ScrollAnimation>
                 <Modal onClose={this.toggleModal} show={this.state.show} >
                     <JobForm job={this.state.job} buttonLabel={this.state.form === 'edit' ? "Update Job" : "Create Job"} toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleSubmit}/>
                 </Modal>
+                <ScrollAnimation animateIn="fadeIn" animateOnce={true} delay={250}>
                 <h2>JOBS</h2>
 
                 <div className="filterContainer" onSubmit={this.filterSubmit}>
@@ -132,7 +134,7 @@ class Jobs extends React.Component {
                     </form>
                 </div>
                 </ScrollAnimation>
-                <ScrollAnimation animateIn="fadeInUp" delay={300} animateOnce={true}>
+                <ScrollAnimation animateIn="fadeIn" delay={500} animateOnce={true}>
                 {jobDisplay()}
                 </ScrollAnimation>
             </div>

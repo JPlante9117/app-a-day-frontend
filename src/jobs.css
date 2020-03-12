@@ -7,6 +7,7 @@
     display: inline-block;
     color: black;
     transition: all 0.5s;
+    z-index: 0;
   }
 
   .jobCard:hover, .createJob:hover, .updateJob:hover, .removeJob:hover, .resetButton:hover:enabled {
@@ -145,7 +146,7 @@ div.ReactTags__selected a.ReactTags__remove {
 }
 
 .filterContainer {
-  width: 40%;
+  width: 50%;
 }
 
 .jobNewRow {
