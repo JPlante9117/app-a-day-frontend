@@ -6,6 +6,7 @@ import '../dashboard.scss'
 import moment from 'moment'
 import DashGoal from '../components/DashGoal'
 import DashJob from '../components/DashJob'
+import ScrollAnimation from 'react-animate-on-scroll'
 
 class Dashboard extends React.Component {
 
@@ -66,10 +67,11 @@ class Dashboard extends React.Component {
         return(
             <div className="grid" style={{paddingTop: "20px"}}>
                 <main className="main">
+                    <ScrollAnimation animateIn="fadeInDown" offset={0}>
                     <div className="main-overview">
                         <Link to={"/jobs"}><div className="overviewCard">
                             <div className="overviewCard-icon overviewCard-icon--apps">
-                                <i className="far fa-file-alt"></i>
+                                <i className="far fa-file-alt">Apps</i>
                             </div>
                             <div className="overviewCard-description">
                                 <h3 className="overviewCard-title text-light">Your Applications</h3>
@@ -78,7 +80,7 @@ class Dashboard extends React.Component {
                         </div></Link>
                         <Link to={"/goals"}><div className="overviewCard">
                             <div className="overviewCard-icon overviewCard-icon--comingup">
-                                <i className="far fa-calendar-check"></i>
+                                <i className="far fa-calendar-check">Goals</i>
                             </div>
                             <div className="overviewCard-description">
                                 <h3 className="overviewCard-title text-light">This Week's Goals</h3>
@@ -87,7 +89,7 @@ class Dashboard extends React.Component {
                         </div></Link>
                         <Link to={"/goals"}><div className="overviewCard" style={{backgroundColor: this.pastDueGoals().length > 0 ? "salmon" : null}}>
                             <div className="overviewCard-icon overviewCard-icon--pastdue">
-                                <i className="far fa-envelope"></i>
+                                <i className="far fa-envelope">Due</i>
                             </div>
                             <div className="overviewCard-description">
                                 <h3 className="overviewCard-title text-light" style={{color: this.pastDueGoals().length > 0 ? "white" : null}}>Past Due Goals</h3>
@@ -95,6 +97,8 @@ class Dashboard extends React.Component {
                             </div>
                         </div></Link>
                     </div>
+                    </ScrollAnimation>
+                    <ScrollAnimation animateIn="fadeIn" offset={0} delay={500}>
                     <div className="main__cards">
                         <div className="card">
                             <div className="card__header">
@@ -123,6 +127,7 @@ class Dashboard extends React.Component {
                             </div>
                         </div>
                     </div>
+                    </ScrollAnimation>
                 </main>
         </div>
         )

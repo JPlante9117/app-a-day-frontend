@@ -3,9 +3,9 @@ import Job from '../components/Job'
 import Modal from '../components/Modal'
 import JobForm from '../components/JobForm'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { createJob, deleteJob, updateJob } from '../actions/jobs'
+import ScrollAnimation from 'react-animate-on-scroll'
 
 class Jobs extends React.Component {
 
@@ -118,6 +118,7 @@ class Jobs extends React.Component {
 
         return(
             <div className="container">
+                <ScrollAnimation animateIn="fadeInDown" animateOnce={true}>
                 <button className="createJob" onClick={this.toggleModal}>Interested in a New Job?</button>
                 <Modal onClose={this.toggleModal} show={this.state.show} >
                     <JobForm job={this.state.job} buttonLabel={this.state.form === 'edit' ? "Update Job" : "Create Job"} toggleModal={this.toggleModal} onClose={this.toggleModal} handleOnSubmit={this.handleSubmit}/>
@@ -126,11 +127,14 @@ class Jobs extends React.Component {
 
                 <div className="filterContainer" onSubmit={this.filterSubmit}>
                     <form onChange={(event) => this.filterJobs(event, renderJobs)}>
-                        <input type="text" onChange={this.filterChange} value={this.state.filter} name="filter" />
+                        <input type="text" onChange={this.filterChange} value={this.state.filter} name="filter" placeholder="Search By Tag . . ." />
                         <button className="resetButton" disabled={this.resetFilterDisabled()} onClick={this.resetFilterClick}>Reset</button>
                     </form>
                 </div>
+                </ScrollAnimation>
+                <ScrollAnimation animateIn="fadeInUp" delay={300} animateOnce={true}>
                 {jobDisplay()}
+                </ScrollAnimation>
             </div>
         )
     }
