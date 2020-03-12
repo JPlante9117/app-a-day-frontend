@@ -25,6 +25,7 @@ class Dashboard extends React.Component {
                 withinWeek.push(goal)
             }
         })
+        withinWeek.sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
         return withinWeek
     }
 
@@ -84,13 +85,13 @@ class Dashboard extends React.Component {
                                 <p className="overviewCard-subtitle">{this.upcomingGoals().length > 0 ? this.upcomingGoals().length : "All Caught Up! Set a New Goal!"}</p>
                             </div>
                         </div></Link>
-                        <Link to={"/goals"}><div className="overviewCard">
+                        <Link to={"/goals"}><div className="overviewCard" style={{backgroundColor: this.pastDueGoals().length > 0 ? "salmon" : null}}>
                             <div className="overviewCard-icon overviewCard-icon--pastdue">
                                 <i className="far fa-envelope"></i>
                             </div>
                             <div className="overviewCard-description">
-                                <h3 className="overviewCard-title text-light">Past Due Goals</h3>
-                                <p className="overviewCard-subtitle">{this.pastDueGoals().length > 0 ? this.pastDueGoals().length : "All Caught Up!"}</p>
+                                <h3 className="overviewCard-title text-light" style={{color: this.pastDueGoals().length > 0 ? "white" : null}}>Past Due Goals</h3>
+                                <p className="overviewCard-subtitle" style={{color: this.pastDueGoals().length > 0 ? "white" : null}}>{this.pastDueGoals().length > 0 ? this.pastDueGoals().length : "All Caught Up!"}</p>
                             </div>
                         </div></Link>
                     </div>

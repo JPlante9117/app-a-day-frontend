@@ -36,7 +36,7 @@ const GoalCalendar = props => {
                 events={setEvents()}
                 startAccessor="start"
                 endAccessor="end"
-                style={{height: "75vh"}}
+                style={{height: "75vh", width: "100%"}}
                 views={['month']}
                 />
         </div>

@@ -4,7 +4,7 @@ import Modal from '../components/Modal'
 import GoalForm from '../components/GoalForm'
 import { connect } from 'react-redux'
 
-import { updateGoal, updateCompletionGoal, deleteGoal } from '../actions/goals'
+import { createGoal, updateGoal, updateCompletionGoal, deleteGoal } from '../actions/goals'
 
 import moment from 'moment'
 
@@ -17,7 +17,7 @@ class Goals extends React.Component {
             title: "",
             description: "",
             completed: false,
-            due_date: ""
+            due_date: new Date()
         },
         show: false,
         form: ''
@@ -46,7 +46,7 @@ class Goals extends React.Component {
                 title: "",
                 description: "",
                 completed: false,
-                due_date: ""
+                due_date: new Date()
             },
             show: !this.state.show,
             form: ''
@@ -123,4 +123,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { updateGoal, updateCompletionGoal, deleteGoal })(Goals)
+export default connect(mapStateToProps, { createGoal, updateGoal, updateCompletionGoal, deleteGoal })(Goals)
