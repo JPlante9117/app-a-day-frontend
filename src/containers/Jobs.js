@@ -137,6 +137,9 @@ class Jobs extends React.Component {
                 <ScrollAnimation animateIn="fadeIn" delay={500} animateOnce={true}>
                 {jobDisplay()}
                 </ScrollAnimation>
+                <ScrollAnimation animateIn="fadeIn" offset={0}>
+                    {renderJobs.length === 0 ? <h1>No Applications</h1> : ""}
+                </ScrollAnimation>
             </div>
         )
     }

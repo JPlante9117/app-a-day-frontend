@@ -94,11 +94,10 @@ class Goals extends React.Component {
     }
 
     render(){
-        let goals = this.props.goals.filter(goal => goal.completed === false).sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
-        let pastDue = goals.filter(goal => moment(goal.due_date).isBefore(moment().startOf('day')))
-        goals = goals.filter(goal => !pastDue.includes(goal))
+        let goals = this.props.goals.filter(goal => goal.completed === false)
+        let pastDue = goals.filter(goal => moment(goal.due_date).isBefore(moment().startOf('day'))).sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
+        goals = goals.filter(goal => !pastDue.includes(goal)).sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
         let completedGoals = this.props.goals.filter(goal => goal.completed === true).sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
-goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} />)
 
         return(
             <div className="container">
@@ -118,6 +117,9 @@ goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.hand
                 </ScrollAnimation>
                 <ScrollAnimation animateIn="fadeInUp" offset={0} delay={750} animateOnce={true}>
                 {completedGoals.length > 0 ? this.renderCompletedGoals(completedGoals) : null}
+                </ScrollAnimation>
+                <ScrollAnimation animateIn="fadeIn" offset={0}>
+                    {completedGoals.length === 0 && pastDue.length === 0 && goals.length === 0 ? <h1>All Caught Up! Set a New Goal!</h1> : ""}
                 </ScrollAnimation>
                 
             </div>
