@@ -26,6 +26,8 @@ Start up the local server with
 npm start
 ```
 
+Double check the terminal to see the host port for the application (It defaults to localhost:3000).
+
 Once the application is open, you will see a homepage and then dashboard after a brief delay. The dashboard keeps track of the jobs that you have applied for and the goals you have set. Use the navbar on top to see more details on jobs or goals.
 
 In either of those tabs you may create, edit, and delete any jobs/goals you have made.
