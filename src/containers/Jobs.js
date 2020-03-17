@@ -38,6 +38,7 @@ class Jobs extends React.Component {
     }
 
     toggleModal = e => {
+        console.log(1)
         this.setState({
             job: {
                 id: "",
@@ -55,9 +56,12 @@ class Jobs extends React.Component {
 
     handleSubmit = (event, job) => {
         event.preventDefault()
+        console.log(2)
         if (this.state.form === 'edit') {
+            console.log(3)
             this.props.updateJob(job)
         } else {
+            console.log(4)
             this.props.createJob(job)
         }
         this.toggleModal()

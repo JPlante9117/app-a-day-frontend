@@ -1,6 +1,7 @@
 export default function JOBSReducer(state={
     jobs: []
 }, action){
+    console.log(12)
     switch(action.type){
         case "LOADING_JOBS":
             return {

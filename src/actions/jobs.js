@@ -28,6 +28,7 @@ export const updateJob = (job) => {
 }
 
 export const createJob = job => {
+    console.log(6)
     return dispatch => {
         dispatch({type: "LOADING_JOBS"})
         return fetch(`http://localhost:3001/jobs`, {
@@ -41,12 +42,16 @@ export const createJob = job => {
         .then(resp => {
             return resp.json()})
         .then(data => {
+            console.log(7)
             dispatch({type: "CREATE_JOB", payload: data})
         })
         .catch(error => {
+            console.log(8)
             console.log(error)
         })
+        console.log(9)
     }
+    console.log(10)
 }
 
 export const deleteJob = id => {

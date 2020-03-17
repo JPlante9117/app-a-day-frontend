@@ -64,11 +64,15 @@ class Goals extends React.Component {
         this.toggleModal()
     }
 
+    handleOnUpvoteClick = (event, goal) => {
+        console.log(goal.id)
+    }
+
     renderPastDue = (goals) => {
         return(
             <div className="pastDueGoals">
                 <h2>Past Due!</h2>
-                {goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} handleOnUpdateClick={this.handleUpdateClick} />)}
+                {goals.map(goal => <Goal goal={goal} likes={0} handleOnUpvoteClick={this.handleOnUpvoteClick} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} handleOnUpdateClick={this.handleUpdateClick} />)}
             </div>
         )
     }
@@ -78,7 +82,7 @@ class Goals extends React.Component {
             <div className="completedGoals">
                 <hr />
                 <h2>Completed Goals</h2>
-                {goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} handleOnUpdateClick={this.handleUpdateClick} />)}
+                {goals.map(goal => <Goal goal={goal} likes={0} handleOnUpvoteClick={this.handleOnUpvoteClick} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} handleOnUpdateClick={this.handleUpdateClick} />)}
             </div>
         )
     }
@@ -88,7 +92,7 @@ class Goals extends React.Component {
             <div className="currentGoals">
                 {pastDue.length > 0 ? <hr /> : null}
                 <h2>Current Goals</h2>
-                {goals.map(goal => <Goal goal={goal} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} handleOnUpdateClick={this.handleUpdateClick} />)}
+                {goals.map(goal => <Goal goal={goal} likes={0} handleOnUpvoteClick={this.handleOnUpvoteClick} key={goal.id} handleOnDeleteClick={this.handleDeleteClick} handleOnCompleteClick={this.handleCompleteClick} handleOnUpdateClick={this.handleUpdateClick} />)}
             </div>
         )
     }

@@ -44,6 +44,7 @@ class JobForm extends React.Component {
     }
 
     render() {
+        console.log(5)
         const { labels_attributes } = this.state
         return(
             <div>

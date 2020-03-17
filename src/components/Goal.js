@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../goal.css'
 import Moment from 'react-moment'
 import moment from 'moment'
 
 const Goal = props => {
+
+    let [ likes, setLikes ] = useState(0)
+
+    const handleUpvoteClick = () => {
+        console.log(1)
+        setLikes(likes + 1)
+    }
     
     const { title, description, due_date, completed} = props.goal
 
@@ -21,6 +28,10 @@ const Goal = props => {
             <div className="goalTitle" style={{backgroundColor: headerColor(props.goal) }}>{title}</div>
             <div className="goalContent">
                 <div className="goalDescription">{description}</div>
+                <div>
+                    Likes: {likes}
+                    <button onClick={() => handleUpvoteClick()}>Upvote!</button>
+                </div>
                 <div className="goalDuedate">
                     <div className="centered">
                         Due <Moment format="MMMM  D, YYYY">{due_date}</Moment>
