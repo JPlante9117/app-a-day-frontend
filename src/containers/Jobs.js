@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 
 import { createJob, deleteJob, updateJob } from '../actions/jobs'
 import ScrollAnimation from 'react-animate-on-scroll'
+import JobFilter from '../components/JobFilter'
 
 class Jobs extends React.Component {
 
@@ -81,10 +82,6 @@ class Jobs extends React.Component {
        }))
     }
 
-    filterSubmit = e => {
-        e.preventDefault()
-    }
-
     resetFilterClick = e => {
         e.preventDefault()
         this.setState(prevState => ({
@@ -127,12 +124,8 @@ class Jobs extends React.Component {
                 <ScrollAnimation animateIn="fadeIn" animateOnce={true} delay={250}>
                 <h2>JOBS</h2>
 
-                <div className="filterContainer" onSubmit={this.filterSubmit}>
-                    <form onChange={(event) => this.filterJobs(event, renderJobs)}>
-                        <input type="text" onChange={this.filterChange} value={this.state.filter} name="filter" placeholder="Search By Tag . . ." />
-                        <button className="resetButton" disabled={this.resetFilterDisabled()} onClick={this.resetFilterClick}>Reset</button>
-                    </form>
-                </div>
+                <JobFilter handleOnFormChange={this.filterJobs} disabled={this.resetFilterDisabled} handleOnResetClick={this.resetFilterClick} jobs={renderJobs} handleOnFilterChange={this.filterChange} filterInput={this.state.filter} />
+
                 </ScrollAnimation>
                 <ScrollAnimation animateIn="fadeIn" delay={500} animateOnce={true}>
                 {jobDisplay()}
